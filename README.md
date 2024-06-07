@@ -47,6 +47,15 @@ protected $except = [
     'wechat',
 ];
 ```
+对于 Laravel 11.x 可以使用`bootstrap/app.php` 中的`$middleware->validateCsrfTokens`方法:
+```php
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->validateCsrfTokens(except: [
+        // ...
+        'wechat',
+    ]);
+})
+```
 
 下面以接收普通消息为例写一个例子。
 
